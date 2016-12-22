@@ -42,6 +42,13 @@ contents.each do |row|
   # if the zip code is exactly five digits. assume that it is ok
   # if the zip code is more than 5 digits, truncate it to the first 5 digits
   # if the zip code is less than 5 digits, add zeros to the front until it becomes five digits
-  
-  puts "#{name} #{zipcode}"
+  if zipcode.nil?
+    zipcode = "00000"
+  elsif zipcode.length < 5
+    zipcode = zipcode.rjust 5, "0"
+  elsif zipcode.length > 5
+    zipcode = zipcode[0..4]
+end
+
+puts "#{name} #{zipcode}"
 end
