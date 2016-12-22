@@ -30,12 +30,13 @@
                 #     puts name
                 #   end
 
-# Switching over to use the CSV Library# 
+# Switching over to use the CSV Library #
+# Acessing Columns by their Names #
 require "csv"
 puts "EventManager Initialized!"
 
-contents = CSV.open "event_attendees.csv", headers: true
+contents = CSV.open "event_attendees.csv", headers: true, header_converters: :symbol
 contents.each do |row|
-  name = row[2]
+  name = row[:first_name]
   puts name
 end
